@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        #their-video {
+            width: 100%;
+        }
+        #my-video {
+            width: 25%;
+            position: absolute;
+            top: 16px;
+            left: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex align-items-center" style="height:100vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div>Conectar con usuarios</div>
+                            <div>
+                                <form role="form" method="post" id="initialize-form">
+                                    <div class="input-group mt-3">
+                                        <input type="text" class="form-control" id="user-auth" value="JordanTx21">
+                                        <button type="submit"class="input-group-text" id="btn-init">SET</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form role="form" method="post" id="connect-user-form">
+                                <div class="input-group mt-3">
+                                    <input type="text" class="form-control" placeholder="Search user"
+                                        id="input-user-connect" name="input-user-connect">
+                                    <button class="input-group-text" id="search-user">SEARCH</button>
+                                </div>
+                            </form>
+                            <div class="text-primary h4" id="id-user-conn"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div>Chat</div>
+                            <div><button type="button" class="btn btn-primary" id="btn-call-user">Llamar</button></div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group" id="messages" style="height: 300px;">
+
+                            </ul>
+                            <form role="form" method="post" id="send-message-form">
+                                <input type="hidden" id="input-user-auth" name="input-user-auth">
+                                <div class="input-group mt-3">
+                                    <input type="text" class="form-control" placeholder="Send a message"
+                                        id="input-send-message" name="input-send-message">
+                                    <button class="input-group-text" id="send-message">SEND</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-call-advert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tienes una llamada</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-reject-call">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btn-acept-call">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-current-call" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Estás en una llamda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="end-call"></button>
+                </div>
+                <div class="modal-body">
+                    <video id="their-video" autoplay=""></video>
+                    <video id="my-video" muted="true" autoplay=""></video>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-mute">Mutear</button>
+                    <button type="button" class="btn btn-primary" id="btn-camera">Apagar cámara</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="peerjs.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
